@@ -1,1 +1,1 @@
-# living-lab
+living-lab-app-repo
