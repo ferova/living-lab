@@ -1,0 +1,31 @@
+{
+  "name": "living-lab",
+  "version": "1.0.0",
+  "description": "Data Logger",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/Index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuquirozy/living-lab-app-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuquirozy/living-lab-app-repo/issues"
+  },
+  "homepage": "https://github.com/manuquirozy/living-lab-app-repo#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0",
+    "mongoose": "^5.5.11",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "query-string": "^6.5.0",
+    "winston": "^3.2.1"
+  }
+}
