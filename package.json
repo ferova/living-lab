@@ -24,6 +24,7 @@
     "express": "^4.17.0",
     "mongoose": "^5.5.11",
     "morgan": "^1.9.1",
+    "mqtt": "^3.0.0",
     "path": "^0.12.7",
     "query-string": "^6.5.0",
     "winston": "^3.2.1"

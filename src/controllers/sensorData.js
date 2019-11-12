@@ -1,14 +1,15 @@
 const Data = require('../entities/data');
 const querystring = require('querystring');
 
-const putData = (req, res) => {
+const putData = (topic, message, packet, res) => {
     let data = new Data();
+    let json = JSON.parse(message.toString())
+
+    console.log("New message:" + JSON.stringify(json));
     
-    console.log(req.body);
-    
-    const { temperature, humidity, dewpoint, pressure, light,
-        speed, direction, rainfall, battery } = req.body;
-    
+    var [ temperature, humidity, dewpoint, pressure, light,
+        speed, direction, rainfall, battery] = Object.values(json);
+
     data.temperature = temperature;
     data.humidity=humidity;
     data.dewpoint=dewpoint;
@@ -19,8 +20,8 @@ const putData = (req, res) => {
     data.rainfall=rainfall;
     data.battery=battery;
     data.save((err) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true });
+        if (err) console.log("Failed to log data.");
+        console.log("Succesfully logged data.");
     });
 }
 

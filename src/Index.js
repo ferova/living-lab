@@ -7,8 +7,28 @@ const settings = require('./config/Settings');
 const api = require('./routes/Api')
 const resHandler = require('./utils/ResHandler')
 const cors = require("cors");
+const { retrieveData, putData } = require('./controllers/sensorData');
 
 const app = express();
+
+const mqtt = require('mqtt');
+const  url = require('url');
+
+// Parse
+const mqtt_url = url.parse(process.env.CLOUDMQTT_URL || 'mqtt://localhost:1883');
+const auth = (mqtt_url.auth || ':').split(':');
+
+var client = mqtt.connect(mqtt_url);
+
+client.on('connect', function() { // When connected
+
+  // subscribe to a topic
+  client.subscribe('weatherstation/10009/data', function() {
+    // when a message arrives, do something with it
+    client.on('message', putData);
+    });
+  });
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
